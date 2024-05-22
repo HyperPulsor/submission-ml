@@ -9,8 +9,13 @@ const db = new Firestore();
   console.log('Model loaded!');
 
   const server = Hapi.server({
-    host: process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0',
-    port: 3000
+    port: 3000,
+    host: '0.0.0.0',
+    routes: {
+        cors: {
+          origin: ['*'],
+        },
+    },
   });
 
   server.route({
